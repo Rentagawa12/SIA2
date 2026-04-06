@@ -239,10 +239,10 @@
           ${item.description}<br>
           <em>${new Date(item.dateLostOrFound).toDateString()}</em><br>
           Contact: ${item.contactInfo}<br>
-          ${item.imageURL ? `<img src="${item.imageURL}" alt="${item.itemName}" />` : ''}
+          ${item.imageURL ? '<img src="' + item.imageURL + '" alt="' + item.itemName + '" />' : ''}
           <br>
           ${item.status !== 'claimed'
-            ? `<button onclick="markClaimed('${item._id}')">Mark as Claimed</button>`
+            ? '<button onclick="markClaimed(\'' + item._id + '\')">Mark as Claimed</button>'
             : '<span class="claimed">✔ Claimed</span>'}
         `;
         container.appendChild(card);
