@@ -81,15 +81,18 @@ app.use((err, req, res, next) => {
 const PORT      = process.env.PORT      || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/lostAndFound';
 
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser:    true,
-  useUnifiedTopology: true,
-}).then(() => {
-  console.log('MongoDB connected');
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}).catch(err => {
-  console.error('[FATAL] MongoDB connection failed:', err.message);
-  process.exit(1);
-});
+// Only connect and start server if this file is run directly (not imported)
+if (import.meta.url === `file://${process.argv[1]}`.replace(/\\/g, '/')) {
+  mongoose.connect(MONGO_URI, {
+    useNewUrlParser:    true,
+    useUnifiedTopology: true,
+  }).then(() => {
+    console.log('MongoDB connected');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  }).catch(err => {
+    console.error('[FATAL] MongoDB connection failed:', err.message);
+    process.exit(1);
+  });
+}
 
 export default app;
