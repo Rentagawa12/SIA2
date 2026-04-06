@@ -2,7 +2,7 @@
 import fs from 'fs';
 
 const envContent = `PORT=5000
-MONGO_URI=mongodb+srv://miguel:<miguelito12>@lostandfound.tpd9hq2.mongodb.net/?appName=lostandfound`;
+MONGO_URI=mongodb+srv://miguel:miguelito12@lostandfound.tpd9hq2.mongodb.net/?appName=lostandfound`;
 
 fs.writeFileSync('.env', envContent);
 console.log('.env file created successfully!');
