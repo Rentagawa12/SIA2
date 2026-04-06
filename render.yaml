@@ -18,4 +18,4 @@ services:
       - key: JWT_SECRET
         generateValue: true # Auto-generate a secure secret
       - key: ALLOWED_ORIGINS
-        value: https://lost-and-found-app.onrender.com
+        value: https://lost-and-found-app-oshz.onrender.com
