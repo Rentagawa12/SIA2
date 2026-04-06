@@ -5,7 +5,7 @@ services:
     env: docker
     region: singapore # Choose a region closest to your users
     plan: free # Adjust as needed
-    branch: main # Adjust to match your main branch
+    branch: master # Deploy from master branch
     dockerfilePath: ./Dockerfile/Dockerfile
     dockerContext: .
     envVars:
@@ -14,4 +14,8 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGO_URI
-        sync: false # This will be manually set in Render dashboard 
+        sync: false # This will be manually set in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true # Auto-generate a secure secret
+      - key: ALLOWED_ORIGINS
+        value: https://lost-and-found-app.onrender.com
